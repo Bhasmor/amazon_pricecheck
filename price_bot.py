@@ -3,7 +3,8 @@ from bs4 import BeautifulSoup
 import smtplib
 import time
 
-
+bot_email = input("Bot Emaili: ")
+bot_sifre = input("Bot Sifresi: ")
 URL = input("Url giriniz: ")
 price_holder = float(input("Fiyatı kaça düşerse haber vereyim: "))
 e_mail = input("Hangi email e göndereyim: ")
@@ -40,7 +41,7 @@ def send_email(toMail, url):
     server.starttls()
     server.ehlo()
 
-    server.login("amazon.pricerobot@gmail.com","asdfg123asd")
+    server.login(bot_email,bot_sifre)
 
 
     body = 'Urun linki: ' + url
@@ -48,7 +49,7 @@ def send_email(toMail, url):
     msg = f'Subject:\n\n{body}'
 
     server.sendmail(
-        "amazon.pricerobot@gmail.com",
+        bot_email,
         e_mail,
         msg
     )
